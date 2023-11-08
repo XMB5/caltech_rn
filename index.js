@@ -64,17 +64,24 @@
     }
 
     const upcoming = new Date();
-    upcoming.setMinutes(60); // end of this hour
-    const upcomingInfos = findCourses(upcoming);
-    if (upcomingInfos.length) {
-        const splitter = document.createElement('tr');
-        splitter.classList.add('splitter');
-        for (let i = 0; i < 4; i++) {
-            splitter.appendChild(td('_'));
-        }
-        document.getElementsByTagName('tbody')[0].appendChild(splitter);
-        for (let info of upcomingInfos) {
-            displayCourse(info);
+    for (let i = 0; i < 6; i++) {
+        for (let min of [30, 60, 30, 60]) {
+            if (upcoming.getMinutes() >= min) {
+                continue;
+            }
+            upcoming.setMinutes(min); // end of this hour
+            const upcomingInfos = findCourses(upcoming);
+            if (upcomingInfos.length) {
+                const splitter = document.createElement('tr');
+                splitter.classList.add('splitter');
+                for (let i = 0; i < 4; i++) {
+                    splitter.appendChild(td('_'));
+                }
+                document.getElementsByTagName('tbody')[0].appendChild(splitter);
+                for (let info of upcomingInfos) {
+                    displayCourse(info);
+                }
+            }
         }
     }
 })();
