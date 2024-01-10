@@ -20,8 +20,12 @@
         const dayOfWeek = ['U', 'M', 'T', 'W', 'R', 'F', 'S'][date.getDay()];
         const now = date.getHours() + 1/60 * date.getMinutes();
 
-        for (let course of FA2023) {
+        for (let course of COURSES) {
             if (course.found) {
+                continue;
+            }
+
+            if (course.name.startsWith("Intercollegiate")) {
                 continue;
             }
 
