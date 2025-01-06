@@ -9,6 +9,7 @@
         const elem = document.createElement('tr');
         elem.appendChild(td(course.number));
         elem.appendChild(td(course.name));
+        elem.appendChild(td(foundSection.instructor));
         elem.appendChild(td(foundSection.locations.split('\n')[foundTimeId]));
         elem.appendChild(td(foundSection.times.split('\n')[foundTimeId]));
         document.getElementsByTagName('tbody')[0].appendChild(elem);
@@ -78,7 +79,7 @@
             if (upcomingInfos.length) {
                 const splitter = document.createElement('tr');
                 splitter.classList.add('splitter');
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < 5; i++) {
                     splitter.appendChild(td('_'));
                 }
                 document.getElementsByTagName('tbody')[0].appendChild(splitter);
